@@ -96,7 +96,7 @@ const handleOutgoingMessage =(e) => {
    chatBody.appendChild(incomingMessageDiv);
    chatBody.scrollTo({ top:chatBody.scrollHeight, behavior:"smooth"});
    generateBotResponse(incomingMessageDiv);
-   },600);
+   },200);
 }
 // Handle key press for sending messages
 messageInput.addEventListener("keydown",(e) => {
@@ -135,6 +135,43 @@ fileCancelButton.addEventListener("click", () => {
 
 });
 
+//Emoji picker
+const picker = new EmojiMart.Picker({
+    theme: "light",
+    skinTonePosition: "none",
+    previewPosition: "none",
+    onEmojiSelect: (emoji) => {
+        messageInput.value += emoji.native;
+        messageInput.focus();
+    }
+});
+
+document.querySelector(".chat-form").appendChild(picker);
+const emojiButton = document.getElementById("emoji-picker");
+emojiButton.addEventListener("click", (e) => {
+    e.preventDefault(); // Prevents form submission
+    document.body.classList.toggle("show-emoji-picker");
+});
+
+
 sendMessageButton.addEventListener("click",(e) => handleOutgoingMessage(e));
 
 document.querySelector("#file-upload").addEventListener("click",() => fileInput.click());
+// Toggle chat popup visibility
+document.addEventListener("DOMContentLoaded", function () {
+  const chatToggleButton = document.getElementById("chat-toggle");
+  const chatPopup = document.getElementById("chatbot-popup");
+  const closeChatbotButton = document.getElementById("close-chatbot");
+
+  // Show chatbot on chat icon click
+  chatToggleButton.addEventListener("click", function () {
+    chatPopup.style.display = "block";
+    chatToggleButton.style.display = "none";
+  });
+
+  // Hide chatbot on arrow-down click
+  closeChatbotButton.addEventListener("click", function () {
+    chatPopup.style.display = "none";
+    chatToggleButton.style.display = "block";
+  });
+});
