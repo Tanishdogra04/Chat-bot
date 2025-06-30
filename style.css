@@ -16,12 +16,10 @@ body {
     min-height: 100vh;
     background: linear-gradient(#EEEEFF, #c8c7ff);
 }
-@media (max-width: 768px) {
+
 .chatbot-popup {
     position: relative;
-    width: 100%;
-    max-width: 420px;
-    margin: 10px;
+    width: 420px;
     background: #fff;
     overflow: hidden;
     border-radius:15px;
@@ -380,5 +378,4 @@ body.show-emoji-picker em-emoji-picker {
     bottom: 80px;
     right: 20px;
     z-index: 999;
-}
 }
