@@ -397,7 +397,7 @@ body.show-emoji-picker em-emoji-picker {
   }
 
   .chat-body {
-    height: calc(100vh - 180px); /* adjust for header + footer */
+    height: calc(100vh - 140px); /* adjust for header + footer */
     padding: 15px 12px;
     gap: 12px;
   }
